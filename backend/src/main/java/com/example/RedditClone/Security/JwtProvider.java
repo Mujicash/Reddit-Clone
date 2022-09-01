@@ -25,7 +25,7 @@ public class JwtProvider {
         org.springframework.security.core.userdetails.User principal = (User) authentication.getPrincipal();
 
         return Jwts.builder().setSubject(principal.getUsername())
-                   .setExpiration(new Date(new Date().getTime() + expiration))
+                   .setExpiration(new Date(new Date().getTime() + expiration * 100L))
                    .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 

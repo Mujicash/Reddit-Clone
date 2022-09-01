@@ -43,6 +43,6 @@ public class User {
                 "\npassword= " + password +
                 "\nemail= " + email +
                 "\ncreated= " + created +
-                "enabled= " + enabled;
+                "\nenabled= " + enabled;
     }
 }
