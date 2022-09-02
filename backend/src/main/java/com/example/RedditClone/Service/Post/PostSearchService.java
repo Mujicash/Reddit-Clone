@@ -23,12 +23,15 @@ public class PostSearchService {
         this.mapper     = mapper;
     }
 
-    @Transactional(readOnly = true)
     public PostResponse getPostById(Long id) {
-        Post post = repository.findById(id)
-                              .orElseThrow(() -> new SpringRedditException("Post not found with id " + id));
+        Post post = getPost(id);
 
         return mapper.mapToDto(post);
+    }
+
+    @Transactional(readOnly = true)
+    public Post getPost(Long id) {
+        return repository.findById(id).orElseThrow(() -> new SpringRedditException("Post not found with id " + id));
     }
 
     @Transactional(readOnly = true)

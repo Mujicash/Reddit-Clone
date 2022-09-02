@@ -34,6 +34,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
             if(jwtProvider.validateToken(token)) {
                 String      username = jwtProvider.getUsernameFromToken(token);
+                System.out.println(username + "-1");
                 UserDetails details  = userDetailsService.loadUserByUsername(username);
 
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(details, null,
