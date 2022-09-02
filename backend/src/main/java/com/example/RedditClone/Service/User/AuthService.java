@@ -1,4 +1,4 @@
-package com.example.RedditClone.Service;
+package com.example.RedditClone.Service.User;
 
 import com.example.RedditClone.Dto.RegisterRequest;
 import com.example.RedditClone.Exception.SpringRedditException;
@@ -7,6 +7,7 @@ import com.example.RedditClone.Model.User;
 import com.example.RedditClone.Model.VerificationToken;
 import com.example.RedditClone.Repository.UserRepository;
 import com.example.RedditClone.Repository.VerificationTokenRepository;
+import com.example.RedditClone.Service.MailService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

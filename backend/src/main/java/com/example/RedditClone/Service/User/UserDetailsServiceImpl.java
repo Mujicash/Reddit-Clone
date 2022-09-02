@@ -1,4 +1,4 @@
-package com.example.RedditClone.Service;
+package com.example.RedditClone.Service.User;
 
 import com.example.RedditClone.Model.User;
 import com.example.RedditClone.Repository.UserRepository;
@@ -27,11 +27,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
-
-        if(user == null) {
-            throw new UsernameNotFoundException("No user found with username " + username);
-        }
+        User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("No user found with username " + username));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                                                                       user.isEnabled(), true, true, true,

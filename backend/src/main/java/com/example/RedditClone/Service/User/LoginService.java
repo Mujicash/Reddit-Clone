@@ -1,4 +1,4 @@
-package com.example.RedditClone.Service;
+package com.example.RedditClone.Service.User;
 
 import com.example.RedditClone.Dto.AuthenticationResponse;
 import com.example.RedditClone.Dto.LoginRequest;

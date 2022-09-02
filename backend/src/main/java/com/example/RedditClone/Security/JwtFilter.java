@@ -1,6 +1,6 @@
 package com.example.RedditClone.Security;
 
-import com.example.RedditClone.Service.UserDetailsServiceImpl;
+import com.example.RedditClone.Service.User.UserDetailsServiceImpl;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

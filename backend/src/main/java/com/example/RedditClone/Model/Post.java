@@ -1,11 +1,15 @@
 package com.example.RedditClone.Model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Setter
+@Getter
 @Table(name = "post")
 public class Post {
     @Id
@@ -21,7 +25,7 @@ public class Post {
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_post_author"))
     private User      user;
     private Instant   createdDate;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "subreddit_id", foreignKey = @ForeignKey(name = "FK_post_subreddit"))
     private Subreddit subreddit;
 
@@ -39,61 +43,4 @@ public class Post {
         this.subreddit   = subreddit;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long postId) {
-        this.id = postId;
-    }
-
-    public String getPostName() {
-        return postName;
-    }
-
-    public void setPostName(String postName) {
-        this.postName = postName;
-    }
-
-    @Nullable
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(@Nullable String url) {
-        this.url = url;
-    }
-
-    @Nullable
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(@Nullable String description) {
-        this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Instant getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Subreddit getSubreddit() {
-        return subreddit;
-    }
-
-    public void setSubreddit(Subreddit subreddit) {
-        this.subreddit = subreddit;
-    }
 }

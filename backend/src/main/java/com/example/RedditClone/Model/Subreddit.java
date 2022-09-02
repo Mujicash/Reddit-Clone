@@ -18,7 +18,7 @@ public class Subreddit {
     private Long    id;
     private String  name;
     private String  description;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subreddit")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subreddit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
     private Instant created;
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -42,6 +42,6 @@ public class Subreddit {
                 "\nname= " + name +
                 "\ndescription= " + description +
                 "\ncreated=" + created +
-                "\nuser=" + user;
+                "\nuser= {\n" + user + "\n}";
     }
 }
