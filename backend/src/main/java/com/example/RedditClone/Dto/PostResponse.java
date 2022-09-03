@@ -9,10 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PostResponse {
 
-    private Long   id;
-    private String postName;
-    private String url;
-    private String description;
-    private String username;
-    private String subredditName;
+    private Long    id;
+    private String  postName;
+    private String  url;
+    private String  description;
+    private String  username;
+    private String  subredditName;
+    private Integer voteCount;
+    private Integer commentCount;
+    private String  duration;
+
 }
