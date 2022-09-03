@@ -6,7 +6,6 @@ import com.example.RedditClone.Mapper.VoteMapper;
 import com.example.RedditClone.Model.Post;
 import com.example.RedditClone.Model.User;
 import com.example.RedditClone.Model.Vote;
-import com.example.RedditClone.Model.VoteType;
 import com.example.RedditClone.Repository.VoteRepository;
 import com.example.RedditClone.Service.Post.PostSearchService;
 import com.example.RedditClone.Service.User.SessionService;
