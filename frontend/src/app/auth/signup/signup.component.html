@@ -1,0 +1,62 @@
+<div class="register-section">
+    <div class="row justify-content-center">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" style="text-align: center">
+                    <h4>Register</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                        <div class="form-group row mb-2">
+                            <label for="email_address" class="col-md-3 col-form-label text-md-right">E-Mail</label>
+                            <div class="col-md-8">
+                                <input type="text" [formControlName]="'email'" id="email_address" class="form-control"
+                                    name="email-address" required>
+                                <span *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched">
+                                    Please provide a valid email
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2">
+                            <label class="col-md-3 col-form-label text-md-right">Username</label>
+                            <div class="col-md-8">
+                                <input type="text" [formControlName]="'username'" id="username" class="form-control"
+                                    required>
+                                <span *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">
+                                    Please provide a valid username
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                            <label for="password" class="col-md-3 col-form-label text-md-right">Password</label>
+                            <div class="col-md-8">
+                                <input type="password" [formControlName]="'password'" id="password" class="form-control"
+                                    name="password" required>
+                                <span *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
+                                    Please provide a valid password
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-3 mb-3 justify-content-center">
+                            <div class="col col-md-8">
+                                <button type="submit" class="btn-block sign-up">
+                                    Sign Up
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="my-3">
+                            <span style="padding-left: 15px">Already have an account? 
+                                <a href="/login" href="/login">LogIn</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
