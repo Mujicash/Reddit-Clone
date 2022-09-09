@@ -11,6 +11,11 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  refreshTokenRequest = {
+    refreshToken: this.getRefreshToken(),
+    username: this.getUsername()
+  }
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 
@@ -29,15 +34,11 @@ export class AuthService {
   }
 
   refreshToken() {
-    const refreshTokenRequest = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUsername()
-    }
 
     console.log('refresh token');
 
     return this.http.post<LoginResponse>('http://localhost:8080/api/auth/refreshToken',
-      refreshTokenRequest, { headers: {"Authorization": `Bearer ${this.getJwt()}` }}).pipe(tap(response => {
+      this.refreshTokenRequest, { headers: {"Authorization": `Bearer ${this.getJwt()}` }}).pipe(tap(response => {
         this.localStorage.clear('authenticationToken');
         this.localStorage.clear('expireAt');
 
@@ -65,5 +66,18 @@ export class AuthService {
 
   getUsername() {
     return this.localStorage.retrieve('username');
+  }
+  
+  logout() {
+    this.http.post('http://localhost:8080/api/auth/logout', this.refreshTokenRequest, { responseType: 'text'})
+    .subscribe({
+      next: (data) => console.log(data),
+      error: (error) => console.error(error)
+    });
+
+    this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('expireAt');
+    this.localStorage.clear('username');
+    this.localStorage.clear('refreshToken');
   }
 }
