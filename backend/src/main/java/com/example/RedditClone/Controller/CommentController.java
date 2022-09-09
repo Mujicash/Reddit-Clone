@@ -20,9 +20,9 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createComment(@RequestBody CommentRequest commentRequest) {
+    public ResponseEntity<Void> createComment(@RequestBody CommentRequest commentRequest) {
         commentService.createComment(commentRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Comment created.");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/post/{postId}")

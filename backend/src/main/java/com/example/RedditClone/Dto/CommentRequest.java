@@ -11,10 +11,9 @@ public class CommentRequest {
 
     private Long   postId;
     private String text;
-    private String username;
 
     @Override
     public String toString() {
-        return "CommentRequest{" + "postId=" + postId + ", text='" + text + '\'' + ", username='" + username + '\'' + '}';
+        return "CommentRequest{" + "postId=" + postId + ", text='" + text + '}';
     }
 }
